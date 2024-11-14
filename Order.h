@@ -43,3 +43,6 @@ class Order {
     }
     
 };
+
+using OrderPointer = std::shared_ptr<Order>;
+using Orders = std::vector<OrderPointer>;
