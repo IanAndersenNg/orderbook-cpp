@@ -6,6 +6,7 @@
 # include "Side.h"
 # include "Order.h"
 
+// a pojo class that represents an order modify request
 class OrderModify {
     private:
         OrderId orderId_;

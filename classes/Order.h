@@ -1,5 +1,8 @@
 #pragma once
 
+#include <stdexcept>
+#include <memory>
+
 # include "Usings.h"
 # include "LevelInfo.h"
 # include "OrderType.h"

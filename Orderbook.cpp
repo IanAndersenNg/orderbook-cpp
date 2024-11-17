@@ -2,13 +2,8 @@
 # include <algorithm>
 # include <string>
 
-# include "Usings.h"
-# include "LevelInfo.h"
-# include "OrderType.h"
-# include "Side.h"
-
+#include "AllHeaders.h"
 
 int main() {
     return 0;
-}
-
+};
