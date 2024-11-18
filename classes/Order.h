@@ -2,6 +2,7 @@
 
 #include <stdexcept>
 #include <memory>
+#include <list>
 
 # include "Usings.h"
 # include "LevelInfo.h"
@@ -37,7 +38,7 @@ class Order {
     Quantity getInitialQuantity() const { return initialQuantity_; }
     Quantity getRemainingQuantity() const { return remainingQuantity_; }
 
-    void fill(Quantity quantity){
+    void fill(Quantity quantity){#include <list>
         if(quantity > remainingQuantity_){
             throw std::logic_error("Quantity to fill is greater than remaining quantity");
         }
@@ -48,4 +49,4 @@ class Order {
 };
 
 using OrderPointer = std::shared_ptr<Order>;
-using Orders = std::vector<OrderPointer>;
+using OrderPointers = std::list<OrderPointer>;
