@@ -45,6 +45,8 @@ class Order {
 
         remainingQuantity_ -= quantity;
     }
+
+    bool isFilled() const { return getRemainingQuantity() == 0; }
     
 };
 
