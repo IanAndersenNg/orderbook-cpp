@@ -38,7 +38,7 @@ class Order {
     Quantity getInitialQuantity() const { return initialQuantity_; }
     Quantity getRemainingQuantity() const { return remainingQuantity_; }
 
-    void fill(Quantity quantity){#include <list>
+    void fill(Quantity quantity){
         if(quantity > remainingQuantity_){
             throw std::logic_error("Quantity to fill is greater than remaining quantity");
         }

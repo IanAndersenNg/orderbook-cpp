@@ -8,7 +8,6 @@
 
 class OrderBook {
     private:
-
         struct OrderEntry {
             OrderPointer order_{ nullptr };
             OrderPointers::iterator location_;
@@ -53,7 +52,8 @@ class OrderBook {
             return true;
         }
 
-        Trades matchTrades(){
+        // match bid and ask orders and then return a vector of trades
+        Trades matchOrders(){
             Trades trades;
             trades.reserve(orders_.size());
             
@@ -129,8 +129,48 @@ class OrderBook {
                 !canMatch(order->getSide(), order->getPrice())){
                 return {};
             }
+
+            OrderPointers::iterator iterator;
+
+            if (order -> getSide() == Side::Buy) {
+                auto& orders = bids_[order->getPrice()];
+                orders.push_back(order);
+                iterator = std::next(orders.begin(), orders.size() - 1);
+            } else {
+                auto& orders = asks_[order->getPrice()];
+                orders.push_back(order);
+                iterator = std::next(orders.begin(), orders.size() - 1);
+            }
+
+            orders_.insert({ order->getOrderId(), OrderEntry{ order, iterator } });
+            return matchOrders();
         }
-};
+
+        void cancelOrder(OrderId orderId) {
+            if (!orders_.contains(orderId)) {
+                return;
+            }
+
+            const auto [order, iterator] = orders_.at(orderId);
+            orders_.erase(orderId);
+
+            auto price = order->getPrice();
+            
+            if (order->getSide() == Side::Sell) {
+                auto& orders = asks_[price];
+                orders.erase(iterator);
+                if (orders.empty()) {
+                    asks_.erase(price);
+                }
+            } else {
+                auto& orders = bids_[price];
+                orders.erase(iterator);
+                if (orders.empty()) {
+                    bids_.erase(price);
+                }
+            }
+        }
+}; 
 
 int main() {
     return 0;
