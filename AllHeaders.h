@@ -5,3 +5,5 @@
 #include "classes/Order.h"
 #include "classes/TradeInfo.h"
 #include "classes/Trade.h"
+#include "classes/OrderModify.h"
+#include "classes/OrderbookLevelInfos.h"

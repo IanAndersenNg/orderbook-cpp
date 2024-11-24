@@ -3,13 +3,13 @@
 # include "OrderType.h"
 # include "Side.h"
 
-class OrderBookLevelInfos {
+class OrderbookLevelInfos {
     private:
         LevelInfos bids_;
         LevelInfos asks_;
 
     public:
-        OrderBookLevelInfos(LevelInfos& bids, LevelInfos& asks):
+        OrderbookLevelInfos(LevelInfos& bids, LevelInfos& asks):
             bids_{ bids }, asks_{ asks }
         {}
 
