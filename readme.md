@@ -1,6 +1,6 @@
 # Orderbook Project
 
-This project is an orderbook made in C++ that does....
+This project is an orderbook made in C++ that tracks buy and sell order with different types
 
 ## Classes Explanation
 
